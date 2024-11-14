@@ -4,6 +4,7 @@ import KeyValueExtractor from "./KeyValueExtractor";
 import BicicletaElectricaTemplate from "./BicicletaElectricaTemplate"; // Template pentru bicicletă electrică
 import BicicletaTemplate from "./BicicletaTemplate"; // Template pentru bicicletă normală
 import LootieComponent from "./Animation";
+import BotButton from "./BotButton";
 const Homepage = () => {
   const [extractedPairs, setExtractedPairs] = useState([]); // Stocăm perechile cheie-valoare extrase
   const [templateType, setTemplateType] = useState("bicicleta"); // Setăm tipul de template (bicicleta sau bicicleta electrica)
@@ -19,6 +20,7 @@ const Homepage = () => {
   };
 
   return (
+    <>
     <div className="bg-gray-300 w-full h-screen mx-auto p-14">
       <div className="flex gap-8 justify-center">
         {/* KeyValueExtractor */}
@@ -58,9 +60,13 @@ const Homepage = () => {
             </div>
           )}
         </div>
-      </div>
     
+      </div >  
+  
+      <BotButton/> 
     </div>
+
+      </>
   );
 };
 
