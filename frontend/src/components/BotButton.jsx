@@ -2,7 +2,9 @@ import React, { useState } from "react";
 
 const BotButton = () => {
   // Textul prestabilit pe care vrei să-l copiezi
-  const textToCopy = `<p><iframe width="375px" height="720px" src="https://bikesizing.cube.eu/iframe/cube/634161/E-BIKE%20CUBE%20REACTION%20HYBRID%20PRO%20500%20Flashwhite%20Black%202023/?language=en&color=%23bd2121" frameborder="0" allowfullscreen="allowfullscreen" data-cube-sizing-iframe=""></iframe></p>`;
+  const textToCopy = `<div></div>
+<p></p>
+<p><iframe width="375px" height="720px" src="https://bikesizing.cube.eu/iframe/cube/634161/E-BIKE CUBE REACTION HYBRID PRO 500 Flashwhite Black 2023/?language=en&amp;color=%23bd2121" frameborder="920px" allowfullscreen="allowfullscreen" data-cube-sizing-iframe=""></iframe></p>`;
   // Mesajul care va apărea atunci când se face copierea
   const [copyMessage, setCopyMessage] = useState("Copy Bot");
 
