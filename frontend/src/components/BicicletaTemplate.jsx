@@ -179,7 +179,7 @@ const BicicletaTemplate = ({ pairs }) => {
               <br />
             </span>
             <div style="box-sizing: border-box;">
-              <h4 style="box-sizing: border-box; font-weight: 500; margin: 0px; font-family: 'Roboto Condensed', sans-serif; font-size: 16px; line-height: 1.38; text-transform: uppercase;">
+              <h4 style="box-sizing: border-box; font-weight: 600; margin: 0px; font-family: 'Roboto Condensed', sans-serif; font-size: 16px; line-height: 1.38; text-transform: uppercase;">
                 <em>${spec}</em>
               </h4>
               <p style="box-sizing: border-box; margin: 0px; font-family: 'Roboto Condensed', sans-serif; font-size: 16px; line-height: 1.38;">
@@ -194,7 +194,7 @@ const BicicletaTemplate = ({ pairs }) => {
 
   const bicicletaTemplate = `
     <ul class="product__SpecsItems" style="box-sizing: border-box; margin: 0px; padding: 25 px 0px 133px; list-style-type: none; column-count: 1; column-gap: 60px; background-color: #ffffff;">
-    <h4 style="box-sizing: border-box; margin: 0px; font-family: 'Roboto Condensed', sans-serif; font-size: 16px; line-height: 1.38; text-transform: uppercase;"><span style="font-size: 14pt; font-weight: 500;"><em>SPECIFICAȚII TEHNICE</em></span></h4>
+    <h4 style="box-sizing: border-box; margin: 0px; font-family: 'Roboto Condensed', sans-serif; font-size: 16px; line-height: 1.38; text-transform: uppercase;"><span style="font-size: 14pt; font-weight: 600;"><em>SPECIFICAȚII TEHNICE</em></span></h4>
       ${generateSpecHTML()}
     </ul>
   `;
