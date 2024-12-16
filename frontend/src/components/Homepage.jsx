@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import KeyValueExtractor from "./KeyValueExtractor";
+import ImageUploader from "./ImageUploader";
 import BicicletaElectricaTemplate from "./BicicletaElectricaTemplate"; // Template pentru bicicletă electrică
 import BicicletaTemplate from "./BicicletaTemplate"; // Template pentru bicicletă normală
 import LootieComponent from "./Animation";
@@ -43,23 +44,6 @@ const Homepage = () => {
                 <option value="bicicleta">Bicicleta Normală</option>
                 <option value="bicicleta electrica">Bicicleta Electrică</option>
               </select>
-              <div className="absolute right-[2%] transition-all duration-100 hover:scale-110 hover:cursor-pointer">
-                <img src="./robot.png" className="w-10  h-10" alt="" />
-              </div>
-              <div className="flex  ">
-                <div className="flex gap-2 text-gray-700 ">
-                  <input
-                    type="text"
-                    placeholder="SKU"
-                    className="w-24 bg-gray-300 rounded-md pl-1"
-                  />
-                  <input
-                    type="text"
-                    placeholder="title"
-                    className="w-32 bg-gray-300 rounded-md pl-1"
-                  />
-                </div>
-              </div>
             </div>
 
             {/* Render the selected template based on the type */}
@@ -77,7 +61,9 @@ const Homepage = () => {
             )}
           </div>
         </div>
+        <BotButton />
       </div>
+      {/* <ImageUploader /> */}
     </>
   );
 };

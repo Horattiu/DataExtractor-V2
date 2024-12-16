@@ -104,6 +104,105 @@ const BicicletaTemplate = ({ pairs }) => {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   };
 
+  // const getValueForSpec = (spec) => {
+  //   // Normalizăm spec-ul (eliminăm diacriticele și punem totul la minuscule)
+  //   const normalizedSpec = removeDiacritics(spec.toLowerCase());
+
+  //   // Căutăm spec-ul în lista de pairs
+  //   let foundPair = pairs.find((pair) => {
+  //     const normalizedKey = removeDiacritics(pair.key.toLowerCase());
+  //     return normalizedKey === normalizedSpec;
+  //   });
+
+  //   // Dacă nu găsim o potrivire exactă și există sinonime pentru acest spec
+  //   if (!foundPair && synonyms[spec]) {
+  //     for (let synonym of synonyms[spec]) {
+  //       const normalizedSynonym = removeDiacritics(synonym.toLowerCase());
+  //       foundPair = pairs.find(
+  //         (pair) =>
+  //           removeDiacritics(pair.key.toLowerCase()) === normalizedSynonym
+  //       );
+  //       if (foundPair) break; // Dacă găsim un synonym valid, ieșim din buclă
+  //     }
+  //   }
+
+  //   // Dacă spec-ul este "Accesorii", verificăm și combinăm cu "Chain Guide"
+  //   if (normalizedSpec === removeDiacritics("accesorii")) {
+  //     const chainGuidePair = pairs.find(
+  //       (pair) => removeDiacritics(pair.key.toLowerCase()) === "chain guide"
+  //     );
+  //     if (chainGuidePair) {
+  //       return foundPair
+  //         ? `${foundPair.value}, ${chainGuidePair.value}`
+  //         : chainGuidePair.value;
+  //     }
+  //   }
+
+  //   // Returnăm valoarea găsită sau "N/A" dacă nu am găsit nimic
+  //   return foundPair ? foundPair.value : "N/A";
+  // };
+
+  // ////////////////////////////////////////////////////////////////////////////////////////////
+  // const getValueForSpec = (spec) => {
+  //   // Normalizăm spec-ul (eliminăm diacriticele și punem totul la minuscule)
+  //   const normalizedSpec = removeDiacritics(spec.toLowerCase());
+
+  //   // Căutăm spec-ul în lista de pairs
+  //   let foundPair = pairs.find((pair) => {
+  //     const normalizedKey = removeDiacritics(pair.key.toLowerCase());
+  //     return normalizedKey === normalizedSpec;
+  //   });
+
+  //   // Dacă nu găsim o potrivire exactă și există sinonime pentru acest spec
+  //   if (!foundPair && synonyms[spec]) {
+  //     for (let synonym of synonyms[spec]) {
+  //       const normalizedSynonym = removeDiacritics(synonym.toLowerCase());
+  //       foundPair = pairs.find(
+  //         (pair) =>
+  //           removeDiacritics(pair.key.toLowerCase()) === normalizedSynonym
+  //       );
+  //       if (foundPair) break; // Dacă găsim un synonym valid, ieșim din buclă
+  //     }
+  //   }
+
+  //   // Dacă spec-ul este "Accesorii", verificăm și combinăm cu "Chain Guide"
+  //   if (normalizedSpec === removeDiacritics("accesorii")) {
+  //     const chainGuidePair = pairs.find(
+  //       (pair) => removeDiacritics(pair.key.toLowerCase()) === "chain guide"
+  //     );
+  //     if (chainGuidePair) {
+  //       return foundPair
+  //         ? `${foundPair.value}, ${chainGuidePair.value}`
+  //         : chainGuidePair.value;
+  //     }
+  //   }
+
+  //   // Logica pentru "anvelopa spate" și "anvelopa fata"
+  //   if (normalizedSpec === removeDiacritics("anvelope")) {
+  //     const spatePair = pairs.find(
+  //       (pair) => removeDiacritics(pair.key.toLowerCase()) === "anvelopa spate"
+  //     );
+  //     const fataPair = pairs.find(
+  //       (pair) => removeDiacritics(pair.key.toLowerCase()) === "anvelopa fata"
+  //     );
+
+  //     if (spatePair && fataPair) {
+  //       if (spatePair.value === fataPair.value) {
+  //         return spatePair.value; // Dacă valorile sunt identice
+  //       }
+  //       return `${spatePair.value}, ${fataPair.value}`; // Dacă sunt diferite
+  //     }
+
+  //     if (spatePair) return spatePair.value;
+  //     if (fataPair) return fataPair.value;
+
+  //     return "N/A";
+  //   }
+
+  //   // Returnăm valoarea găsită sau "N/A" dacă nu am găsit nimic
+  //   return foundPair ? foundPair.value : "N/A";
+  // };
+
   const getValueForSpec = (spec) => {
     // Normalizăm spec-ul (eliminăm diacriticele și punem totul la minuscule)
     const normalizedSpec = removeDiacritics(spec.toLowerCase());
@@ -136,6 +235,42 @@ const BicicletaTemplate = ({ pairs }) => {
           ? `${foundPair.value}, ${chainGuidePair.value}`
           : chainGuidePair.value;
       }
+    }
+
+    // Logica pentru "anvelopa spate" și "anvelopa fata"
+    if (normalizedSpec === removeDiacritics("anvelope")) {
+      const spatePair = pairs.find(
+        (pair) => removeDiacritics(pair.key.toLowerCase()) === "anvelopa spate"
+      );
+      const fataPair = pairs.find(
+        (pair) => removeDiacritics(pair.key.toLowerCase()) === "anvelopa fata"
+      );
+
+      if (spatePair && fataPair) {
+        if (spatePair.value === fataPair.value) {
+          return spatePair.value; // Dacă valorile sunt identice
+        }
+        return `${spatePair.value}, ${fataPair.value}`; // Dacă sunt diferite
+      }
+
+      if (spatePair) return spatePair.value;
+      if (fataPair) return fataPair.value;
+
+      return "N/A";
+    }
+
+    // Logica pentru "Jante" sau "Janta"
+    if (
+      normalizedSpec === removeDiacritics("jante") ||
+      normalizedSpec === removeDiacritics("janta")
+    ) {
+      const jantePair = pairs.find(
+        (pair) =>
+          removeDiacritics(pair.key.toLowerCase()) === "jante" ||
+          removeDiacritics(pair.key.toLowerCase()) === "janta"
+      );
+
+      return jantePair ? jantePair.value : "N/A";
     }
 
     // Returnăm valoarea găsită sau "N/A" dacă nu am găsit nimic
